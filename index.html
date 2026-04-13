@@ -162,13 +162,28 @@
     © 2026 Level-AdultUK. All rights reserved.
   </footer>
 
-  <!-- Dark Mode Script -->
-  <script>
-    const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
-    });
-  </script>
+  !-- Dark Mode Script -->
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        toggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+        });
+    </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('✅ Service Worker registered successfully');
+                    })
+                    .catch(function(error) {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
