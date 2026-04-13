@@ -170,20 +170,49 @@
             toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
         });
     </script>
-<!-- PWA Service Worker Registration -->
+  <!-- Inline PWA Service Worker (no separate file needed) -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service-worker.js')
+                // Register inline service worker
+                const swCode = `
+                    const CACHE_NAME = 'level-adultuk-v3';
+                    const urlsToCache = [
+                        '/',
+                        '/index.html',
+                        '/styles.css',
+                        '/manifest.json',
+                        '/icon-192.png',
+                        '/icon-512.png'
+                    ];
+
+                    self.addEventListener('install', event => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME)
+                                .then(cache => cache.addAll(urlsToCache))
+                        );
+                    });
+
+                    self.addEventListener('fetch', event => {
+                        event.respondWith(
+                            caches.match(event.request)
+                                .then(response => response || fetch(event.request))
+                        );
+                    });
+                `;
+
+                const blob = new Blob([swCode], { type: 'application/javascript' });
+                const url = URL.createObjectURL(blob);
+
+                navigator.serviceWorker.register(url)
                     .then(function(registration) {
-                        console.log('✅ Service Worker registered successfully');
+                        console.log('✅ Inline Service Worker registered successfully');
                     })
                     .catch(function(error) {
-                        console.log('❌ Service Worker registration failed:', error);
+                        console.log('❌ Inline Service Worker registration failed:', error);
                     });
             });
         }
     </script>
 </body>
-</html>
-    
+</html>  
