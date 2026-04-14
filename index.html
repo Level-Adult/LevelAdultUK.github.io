@@ -6,11 +6,12 @@
     <title>Level Adult UK • £1.99 Guides for First Passport, Job, Mortgage, Mental Health & Moving Abroad</title>
     <meta name="description" content="Practical £1.99 digital guides for young adults in the UK. How to get your first passport, land your first job, rent or buy your first home, manage bills, mental health support and remote work visas.">
     
-    <!-- PWA Setup -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#3b82f6">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- PWA Setup - Manifest only (Service Worker disabled due to GitHub Pages 404 issue) -->
+    <script>
+        console.log('PWA manifest active - Service Worker disabled for now');
+    </script>
+</body>
+</html>
     
     <!-- Icons for PWA -->
     <link rel="icon" href="icon-192.png" type="image/png">
@@ -170,20 +171,4 @@
             toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
         });
     </script>
-  <!-- PWA Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js', { scope: '/' })
-                    .then(reg => {
-                        console.log('✅ Service Worker registered successfully with scope:', reg.scope);
-                    })
-                    .catch(err => {
-                        console.log('❌ Service Worker registration failed:', err);
-                    });
-            });
-        }
-    </script>
-</body>
-</html>
-</html>  
+  
