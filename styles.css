@@ -1,79 +1,131 @@
-/* Basic reset and body */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
-  color: #111827;
-  background: #ffffff;
+/* Basic Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Dark mode */
-html.dark {
-  background: #111827;
-  color: #f3f4f6;
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8fafc;
+    transition: background-color 0.3s, color 0.3s;
 }
-html.dark button { background: #3b82f6; color: white; }
-html.dark button:hover { background: #60a5fa; }
+
+.dark body {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
 
 /* Header */
-header { 
-  position: sticky; top: 0; background: rgba(255,255,255,0.8); 
-  backdrop-filter: blur(8px); border-bottom: 1px solid #e5e7eb;
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-html.dark header { background: rgba(17,24,39,0.8); border-color: #374151; }
-header > div { max-width: 1280px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
-h1 { color: #3b82f6; font-size: 1.5rem; font-weight: bold; }
+
+.dark header {
+    background: #1e2937;
+}
 
 /* Hero */
-section:first-of-type { padding: 5rem 1rem; text-align: center; background: linear-gradient(to bottom, #ffffff, #f9fafb); }
-html.dark section:first-of-type { background: linear-gradient(to bottom, #111827, #1f2937); }
-h2 { font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; }
-section:first-of-type p { font-size: 1.25rem; color: #4b5563; margin-bottom: 2rem; }
-html.dark section:first-of-type p { color: #9ca3af; }
-a { background: #3b82f6; color: white; padding: 1rem 2rem; border-radius: 0.5rem; text-decoration: none; }
-a:hover { background: #60a5fa; }
-
-/* Guides grid */
-#guides { padding: 4rem 1rem; }
-h3 { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
-#guides > div > div { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-#guides div div { background: white; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-html.dark #guides div div { background: #1f2937; border-color: #374151; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
-h4 { font-size: 1.25rem; margin-bottom: 0.75rem; }
-p { color: #4b5563; margin-bottom: 1rem; }
-html.dark p { color: #9ca3af; }
-span { font-size: 1.5rem; font-weight: bold; color: #3b82f6; }
-
-/* Bundle card */
-#guides div div:last-child { grid-column: 1 / -1; text-align: center; background: linear-gradient(to right, rgba(59,130,246,0.1), rgba(59,130,246,0.05)); padding: 2rem; }
-html.dark #guides div div:last-child { background: linear-gradient(to right, rgba(96,165,250,0.2), rgba(96,165,250,0.1)); }
-
-/* Email section */
-section:nth-last-of-type(2) { padding: 4rem 1rem; background: #f9fafb; text-align: center; }
-html.dark section:nth-last-of-type(2) { background: #1f2937; }
-form { display: flex; gap: 0.75rem; max-width: 400px; margin: 1.5rem auto; }
-input { flex: 1; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.5rem; }
-html.dark input { background: #374151; border-color: #4b5563; color: white; }
-button { background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; border: none; cursor: pointer; }
-button:hover { background: #60a5fa; }
-/* Payhip button styling – makes them match your blue theme */
-.payhip-btn {
-  background: #3b82f6 !important;
-  color: white !important;
-  padding: 12px 24px !important;
-  border-radius: 12px !important;
-  font-size: 1.1rem !important;
-  font-weight: 500 !important;
-  text-decoration: none !important;
-  transition: background 0.2s;
-  display: inline-block;
-  margin-top: 1rem;
+.hero {
+    background: linear-gradient(135deg, #3b82f6, #1e40af);
+    color: white;
 }
 
-.payhip-btn:hover {
-  background: #2563eb !important;
+/* Guide Cards */
+.guide-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.dark .guide-card {
+    background: #1e2937;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.guide-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+}
+
+.guide-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+    color: #1e40af;
+}
+
+.dark .guide-card h3 {
+    color: #60a5fa;
+}
+
+.guide-card p {
+    flex-grow: 1;
+    margin-bottom: 20px;
+    color: #64748b;
+}
+
+.dark .guide-card p {
+    color: #94a3b8;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 16px;
+}
+
+/* Payhip Button Styling */
+.payhip-buy-button {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    background: #2563eb;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.payhip-buy-button:hover {
+    background: #1d4ed8;
+    transform: scale(1.02);
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    gap: 24px;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* Footer */
-footer { padding: 2rem 1rem; text-align: center; color: #6b7280; border-top: 1px solid #e5e7eb; }
-html.dark footer { color: #9ca3af; border-color: #374151; }
+footer {
+    margin-top: 40px;
+}
