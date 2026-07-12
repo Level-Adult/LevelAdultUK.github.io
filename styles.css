@@ -1,4 +1,4 @@
-/* ====================== BASIC RESET ====================== */
+/* ====================== BASIC SETUP ====================== */
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +10,6 @@ body {
     line-height: 1.6;
     color: #1f2937;
     background-color: #f8fafc;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 .dark body {
@@ -103,26 +102,26 @@ header {
     transform: scale(1.03);
 }
 
-/* ====================== GRID LAYOUT (2 COLUMNS) ====================== */
+/* ====================== GRID - 2 COLUMNS ====================== */
 .grid {
     display: grid;
     gap: 24px;
-    grid-template-columns: 1fr;           /* Mobile: 1 column */
+    grid-template-columns: 1fr;               /* Mobile: 1 column */
 }
 
 @media (min-width: 768px) {
     .grid {
-        grid-template-columns: repeat(2, 1fr);   /* Tablet & Desktop: 2 columns side-by-side */
+        grid-template-columns: repeat(2, 1fr);   /* Tablet + Desktop: 2 columns side-by-side */
     }
 }
 
 @media (min-width: 1280px) {
     .grid {
-        grid-template-columns: repeat(3, 1fr);   /* Large screens: 3 columns */
+        grid-template-columns: repeat(3, 1fr);   /* Very large screens: 3 columns */
     }
 }
 
-/* ====================== OTHER SECTIONS ====================== */
+/* ====================== SECTIONS & FOOTER ====================== */
 section {
     margin-bottom: 40px;
 }
@@ -135,7 +134,6 @@ h2 {
     color: #93c5fd;
 }
 
-/* Footer */
 footer {
     background: #111827;
     color: #9ca3af;
